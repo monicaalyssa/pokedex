@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="icon" type="image/png" href="images/pokemon-icon.svg">
+</head>
+
+<body>
+    <header id="page__header">
+
+        <div class="page__header__item">
+            <img src="/images/pokemon-icon.svg" alt="Pokemon logo" id="page__logo">
+            <h1 id="page__title">Pokédex</h1>
+        </div>
+
+        <div class="page__header__item" id="search__bar">
+            <div id="search__container">
+                <img src="/images/search.svg" alt="Search Icon" title="Search for A Pokemon" id="search__icon">
+            </div>
+        </div>
+
+    </header>
+
+    <div id="line"></div>
+
+    <div id="body">
+
+        <div id="search__by">
+            <h4 class="search__by" id="search__by__name">Search by name</h4>
+            <h4 class="search__by" id="search__by__number">Search by number</h4>
+            <h4 class="search__by" id="search__by__hp">Search by hp</h4>
+            <h4 class="search__by" id="search__by__height">Search by height</h4>
+            <img class="shuffle" src="images/grey-shuffle.svg" title="Shuffle List" alt="Shuffle Icon">
+        </div>
+
+        <div id="modal-container"></div>
+
+
+
+
+        <ul> <!--This is where the DOM ul class (pokemon__grid) is located-->
+            <!--This is where the DOM button class (pokemon__name) is located-->
+        </ul>
+    </div>
+    <script src="js/promise-polyfill.js"></script>
+    <script src="js/fetch-polyfill.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
