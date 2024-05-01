@@ -145,3 +145,13 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media all and (max-width: 500px) {
+  #page-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .pokemon-grid {
+    padding: 40px 0;
+  }
+}
