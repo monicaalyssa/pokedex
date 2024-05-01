@@ -1,5 +1,5 @@
 # Pokédex
-This project is a Pokédex web application that utilizes a Pokémon API to fetch and display information about different Pokémon species. It presents a list of Pokémon, showcasing an image for each Pokémon. Users can delve deeper into each Pokémon's details through an interactive modal interface.
+This project is a web application that utilizes a Pokémon API to fetch and display information about different Pokémon species. It presents a list of Pokémon, showcasing an image for each Pokémon. Users can delve deeper into each Pokémon's details through an interactive modal interface.
 ## Features
 - **Repository:** A local repository is maintained to store the details of each Pokémon fetched from the PokeAPI.
 - **List of Pokémon:** The application presents a list of Pokémon for users to browse through.
