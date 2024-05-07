@@ -131,6 +131,10 @@ p {
   font-weight: 600;
 }
 
+.pokemon-name {
+  font-size: 18px;
+}
+
 .btn-sm {
   order: 3;
   margin-top: 10px;
@@ -146,12 +150,65 @@ p {
   }
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 670px) {
+
   #page-header {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 13px;
+    padding-bottom: 12px;
   }
+
+  .pokemon-name {
+    font-size: 15px;
+  }
+
+  .pokemon-image {
+    width: 80px;
+  }
+
+  .pokemon-grid-item {
+    padding: 15px;
+    padding-right: 13px;
+    border-radius: 5px;
+    padding-bottom: 18px;
+  }
+
+  #page-title {
+    font-size: 23px;
+    font-weight: 500;
+  }
+
+  #page-logo {
+    width: 25px;
+    margin-bottom: 5px;
+  }
+
+  .search-pokemon {
+    height: 36px;
+    padding-left: 0.8rem;
+    padding-right: 0.5rem;
+  }
+  .search-pokemon::placeholder {
+    font-size: 14px;
+  }
+
+  #search-bar {
+    padding-bottom: 2px;
+  }
+
+  #page-header {
+    width: 92%;
+    margin: auto;
+    padding-bottom: 13px;
+  }
+
   .pokemon-grid {
-    padding: 40px 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 180px 180px;
+    padding: 26px 0;
+    width: 92%;
+    margin: auto;
   }
 }
+

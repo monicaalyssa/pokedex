@@ -24,10 +24,13 @@ let pokemonRepository = (function () {
 
     let listItem = document.createElement("li");
     uppercaseName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-    listItem.innerText = uppercaseName;
+    let pokemonBoxName = document.createElement("p");
+    pokemonBoxName.innerText = uppercaseName;
+    pokemonBoxName.classList.add("pokemon-name");
+    listItem.appendChild(pokemonBoxName);
     listItem.classList.add("pokemon-grid-item");
     pokemonListGrid.appendChild(listItem);
-
+    
     let button = document.createElement("button");
     button.classList.add("btn", "btn-secondary", "btn-sm");
     button.innerText = "See details";
@@ -43,6 +46,7 @@ let pokemonRepository = (function () {
 
     pokemonRepository.loadDetails(pokemon).then(function () {
       let pokemonImg = document.createElement("img");
+      pokemonImg.classList.add("pokemon-image");
       pokemonImg.src = pokemon.imageUrl;
       listItem.appendChild(pokemonImg);
     });
