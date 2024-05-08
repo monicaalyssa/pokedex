@@ -30,7 +30,7 @@ let pokemonRepository = (function () {
     listItem.appendChild(pokemonBoxName);
     listItem.classList.add("pokemon-grid-item");
     pokemonListGrid.appendChild(listItem);
-    
+
     let button = document.createElement("button");
     button.classList.add("btn", "btn-secondary", "btn-sm");
     button.innerText = "See details";
@@ -51,6 +51,30 @@ let pokemonRepository = (function () {
       listItem.appendChild(pokemonImg);
     });
   }
+
+  function searchPokemon() {
+    let $searchBar = $("#input");
+
+    $searchBar.on("input", function () {
+      let searchValue = $searchBar.val().toLowerCase();
+      let filteredPokemon = pokemonList.filter((pokemon) =>
+        pokemon.name.toLowerCase().startsWith(searchValue)
+      );
+      let $pokemonListElement = $(".pokemon-grid");
+      $pokemonListElement.empty();
+
+      if (filteredPokemon.length === 0) {
+        let message = $("<p>No results</p>");
+        message.addClass("no-results");
+        $pokemonListElement.append(message);
+      } else {
+        filteredPokemon.forEach((pokemon) => {
+          addListItem(pokemon);
+        });
+      }
+    });
+  }
+  searchPokemon();
 
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {

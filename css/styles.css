@@ -135,6 +135,11 @@ p {
   font-size: 18px;
 }
 
+.no-results {
+  position: absolute;
+  font-size: 16px;
+}
+
 .btn-sm {
   order: 3;
   margin-top: 10px;
@@ -151,7 +156,6 @@ p {
 }
 
 @media all and (max-width: 670px) {
-
   #page-header {
     padding-left: 0;
     padding-right: 0;
@@ -189,8 +193,13 @@ p {
     padding-left: 0.8rem;
     padding-right: 0.5rem;
   }
-  .search-pokemon::placeholder {
+
+  input[type="text"] {
     font-size: 14px;
+  }
+
+  .no-results {
+    font-size: 15px;
   }
 
   #search-bar {
@@ -211,4 +220,3 @@ p {
     margin: auto;
   }
 }
-
