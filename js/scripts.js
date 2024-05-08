@@ -76,6 +76,13 @@ let pokemonRepository = (function () {
   }
   searchPokemon();
 
+  let infoDiv = document.createElement("div");
+  infoDiv.classList.add("info");
+
+  function insertDecimal(num) {
+    return (decimal = (num / 10).toFixed(2));
+  }
+
   function showDetails(item) {
     pokemonRepository.loadDetails(item).then(function () {
       let modalBody = document.querySelector(".modal-body");
@@ -83,26 +90,34 @@ let pokemonRepository = (function () {
       let modalHeader = document.querySelector(".modal-header");
       let modalImage = document.querySelector(".modal-image");
       let modalHeight = document.querySelector(".modal-height");
+      let modalWeight = document.querySelector(".modal-weight");
       let modalTypes = document.querySelector(".modal-types");
 
       modalTitle.innerText = item.name[0].toUpperCase() + item.name.slice(1);
       modalImage.setAttribute("src", item.imageUrl);
-      modalHeight.innerText = "Height: " + item.height;
+      insertDecimal(item.height);
+      modalHeight.innerText = "Height: " + decimal + " m";
+      insertDecimal(item.weight);
+      modalWeight.innerText = "Weight: " + decimal + " kg";
       modalTypes.innerText = "Types: ";
 
-      modalBody.append(modalImage);
-      modalBody.append(modalHeight);
+      modalBody.append(infoDiv);
+      infoDiv.append(modalHeight);
+      infoDiv.append(modalWeight);
 
       let array = [];
 
       item.types.forEach((element) => {
-        let eachType = document.createElement("p");
-        array.push(eachType.innerText);
-        eachType.innerText =
+        typeInfo =
           element.type.name[0].toUpperCase() + element.type.name.slice(1);
-        modalTypes.appendChild(eachType);
-        modalBody.appendChild(modalTypes);
+        array.push(typeInfo);
       });
+      let show = document.createElement("span");
+      show.innerText = array.join(", ");
+
+      modalTypes.appendChild(show);
+      infoDiv.appendChild(modalTypes);
+      modalBody.append(modalImage);
     });
   }
 
@@ -147,6 +162,7 @@ let pokemonRepository = (function () {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
+        item.weight = details.weight;
       })
       .catch(function (e) {
         console.error(e);

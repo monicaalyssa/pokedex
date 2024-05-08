@@ -100,6 +100,11 @@ p {
   margin: 0;
 }
 
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+}
+
 .pokemon-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -110,6 +115,10 @@ p {
   grid-gap: 22px;
   grid-row-gap: 22px;
   width: 78%;
+}
+
+.info {
+  align-content: center;
 }
 
 .pokemon-grid-item {
