@@ -4,6 +4,7 @@ This project is a web application that utilizes a Pokémon API to fetch and disp
 - **Repository:** A local repository is maintained to store the details of each Pokémon fetched from the PokeAPI.
 - **List of Pokémon:** The application presents a list of Pokémon for users to browse through.
 - **Pokémon Details:** Clicking on a Pokémon displays a modal with the Pokémon's name, image, height, and type(s).
+- **Search Bar:** Includes a search functionality to easily find Pokémon by name.
 ## Usage
 To use this application locally, follow these steps:
 
