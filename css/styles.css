@@ -103,6 +103,17 @@ p {
 .modal-body {
   display: flex;
   justify-content: space-between;
+  height: 250px
+}
+
+.modal-image {
+  height: 100%;
+  padding-right: 50px;
+}
+
+
+.modal-body {
+  flex: 1 1 0
 }
 
 .pokemon-grid {
@@ -115,10 +126,6 @@ p {
   grid-gap: 22px;
   grid-row-gap: 22px;
   width: 78%;
-}
-
-.info {
-  align-content: center;
 }
 
 .pokemon-grid-item {

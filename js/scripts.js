@@ -58,11 +58,12 @@ let pokemonRepository = (function () {
     button.setAttribute("data-target", "#exampleModal");
     listItem.appendChild(button);
 
+    fetchJson(uppercaseName, listItem);
+    
     button.addEventListener("click", function () {
       showDetails(pokemon);
     });
 
-    fetchJson(uppercaseName, listItem);
   }
 
 function searchImage(individualLinks, uppercaseName, listItem) {
@@ -73,6 +74,7 @@ for (let i = 0; i < individualLinks.length; i++) {
     console.log("Found");  
     let pokemonImg = document.createElement("img");
     pokemonImg.classList.add("pokemon-image");
+    pokemonImg.classList.add(uppercaseName + "-image");
     pokemonImg.src = currentItem.PhotoLink;
     pokemonImg.setAttribute("width", 100);
     pokemonImg.setAttribute("height", 100);
@@ -83,6 +85,7 @@ for (let i = 0; i < individualLinks.length; i++) {
       let pokemonImg = document.createElement("img");
       pokemonImg.classList.add("pokemon-image");
       pokemonImg.src = link
+      pokemonImg.classList.add(uppercaseName + "-image");
       pokemonImg.setAttribute("width", 100);
       pokemonImg.setAttribute("height", 100);
       listItem.appendChild(pokemonImg); 
@@ -150,8 +153,13 @@ for (let i = 0; i < individualLinks.length; i++) {
       let modalWeight = document.querySelector(".modal-weight");
       let modalTypes = document.querySelector(".modal-types");
 
-      modalTitle.innerText = item.name[0].toUpperCase() + item.name.slice(1);
-      modalImage.setAttribute("src", item.imageUrl);
+      let uppercaseTitle = item.name[0].toUpperCase() + item.name.slice(1);
+      modalTitle.innerText = uppercaseTitle
+
+      let imageAttribute = document.querySelector("." + uppercaseTitle + "-image"); 
+      let modalSrc = imageAttribute.getAttribute("src");
+      modalImage.setAttribute("src", modalSrc);
+
       insertDecimal(item.height);
       modalHeight.innerText = "Height: " + decimal + " m";
       insertDecimal(item.weight);
