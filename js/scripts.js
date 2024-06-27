@@ -1,6 +1,7 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  const jsonFilePath = 'images/imageurls.json';
 
   function add(pokemon) {
     if (
@@ -17,6 +18,23 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
+
+  function fetchJson(uppercaseName, listItem) {
+  fetch(jsonFilePath)
+  .then(response => {
+      if (!response.ok) {
+        console.error('Fetch error:', response.status, response.statusText);
+          throw new Error ('Response was not ok')
+      } 
+      return response.json();
+  })
+  .then (jsonData => {
+      searchImage(jsonData.Links, uppercaseName, listItem)
+  })
+  .catch(error => {
+      console.error('Error fetching or parsing JSON:', error);
+  });
+}
 
   function addListItem(pokemon) {
     let pokemonListGrid = document.querySelector("ul");
@@ -44,13 +62,52 @@ let pokemonRepository = (function () {
       showDetails(pokemon);
     });
 
-    pokemonRepository.loadDetails(pokemon).then(function () {
+    fetchJson(uppercaseName, listItem);
+  }
+
+function searchImage(individualLinks, uppercaseName, listItem) {
+  let checked = false
+for (let i = 0; i < individualLinks.length; i++) {
+    let currentItem = individualLinks[i];
+    if (currentItem.PhotoLink.includes(uppercaseName)) {
+    console.log("Found");  
+    let pokemonImg = document.createElement("img");
+    pokemonImg.classList.add("pokemon-image");
+    pokemonImg.src = currentItem.PhotoLink;
+    pokemonImg.setAttribute("width", 100);
+    pokemonImg.setAttribute("height", 100);
+    listItem.appendChild(pokemonImg);
+    break; }
+    
+    function pokemonsConditions(link) {
       let pokemonImg = document.createElement("img");
       pokemonImg.classList.add("pokemon-image");
-      pokemonImg.src = pokemon.imageUrl;
-      listItem.appendChild(pokemonImg);
-    });
+      pokemonImg.src = link
+      pokemonImg.setAttribute("width", 100);
+      pokemonImg.setAttribute("height", 100);
+      listItem.appendChild(pokemonImg); 
+    } 
+    if (currentItem.PhotoLink.includes("Nidoran")) {
+      if (uppercaseName == "Nidoran-f" && (checked == false)) {
+        pokemonsConditions("https://archives.bulbagarden.net/media/upload/b/b2/0029Nidoran.png") 
+      checked = true; 
+    }
+      else if (uppercaseName == "Nidoran-m" && (checked == false)) {
+        pokemonsConditions("https://archives.bulbagarden.net/media/upload/8/8c/0032Nidoran.png");
+        checked = true; 
+      }
+      }
+      if (currentItem.PhotoLink.includes("Farfetch") && (uppercaseName == "Farfetchd")) {
+        pokemonsConditions("https://archives.bulbagarden.net/media/upload/9/99/0083Farfetch%27d.png")
+        break;
+      }
+      if (currentItem.PhotoLink.includes("Mr._Mime") && (uppercaseName == "Mr-mime")) {
+        pokemonsConditions("https://archives.bulbagarden.net/media/upload/f/fb/0122Mr._Mime.png")
+        break;
+      }
+    }
   }
+
 
   function searchPokemon() {
     let $searchBar = $("#input");
@@ -176,6 +233,7 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
+    fetchJson: fetchJson
   };
 })();
 

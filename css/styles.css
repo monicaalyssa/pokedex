@@ -108,7 +108,7 @@ p {
 .pokemon-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 210px 210px 210px;
+  grid-auto-rows: 260px;
   padding: 40px 5%;
   justify-items: center;
   margin: auto;
@@ -141,6 +141,7 @@ p {
 }
 
 .pokemon-name {
+  padding-top: 5px;
   font-size: 18px;
 }
 
@@ -176,10 +177,6 @@ p {
     font-size: 15px;
   }
 
-  .pokemon-image {
-    width: 80px;
-  }
-
   .pokemon-grid-item {
     padding: 15px;
     padding-right: 13px;
@@ -207,6 +204,11 @@ p {
     font-size: 14px;
   }
 
+  .btn-sm {
+    margin-top: 0;
+margin-bottom: 8px;
+  }
+
   .no-results {
     font-size: 15px;
   }
@@ -221,11 +223,18 @@ p {
     padding-bottom: 13px;
   }
 
+  .pokemon-image {
+    width: 80px;
+    height: auto;
+  }
+
   .pokemon-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 180px 180px 180px;
+    grid-auto-rows: 220px;
     padding: 26px 0;
     width: 92%;
     margin: auto;
   }
+
 }
+
