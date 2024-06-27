@@ -1,7 +1,7 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-  const jsonFilePath = 'images/imageurls.json';
+  const jsonFilePath = "images/imageurls.json";
 
   function add(pokemon) {
     if (
@@ -20,21 +20,21 @@ let pokemonRepository = (function () {
   }
 
   function fetchJson(uppercaseName, listItem) {
-  fetch(jsonFilePath)
-  .then(response => {
-      if (!response.ok) {
-        console.error('Fetch error:', response.status, response.statusText);
-          throw new Error ('Response was not ok')
-      } 
-      return response.json();
-  })
-  .then (jsonData => {
-      searchImage(jsonData.Links, uppercaseName, listItem)
-  })
-  .catch(error => {
-      console.error('Error fetching or parsing JSON:', error);
-  });
-}
+    fetch(jsonFilePath)
+      .then((response) => {
+        if (!response.ok) {
+          console.error("Fetch error:", response.status, response.statusText);
+          throw new Error("Response was not ok");
+        }
+        return response.json();
+      })
+      .then((jsonData) => {
+        searchImage(jsonData.Links, uppercaseName, listItem);
+      })
+      .catch((error) => {
+        console.error("Error fetching or parsing JSON:", error);
+      });
+  }
 
   function addListItem(pokemon) {
     let pokemonListGrid = document.querySelector("ul");
@@ -59,58 +59,70 @@ let pokemonRepository = (function () {
     listItem.appendChild(button);
 
     fetchJson(uppercaseName, listItem);
-    
+
     button.addEventListener("click", function () {
       showDetails(pokemon);
     });
-
   }
 
-function searchImage(individualLinks, uppercaseName, listItem) {
-  let checked = false
-for (let i = 0; i < individualLinks.length; i++) {
-    let currentItem = individualLinks[i];
-    if (currentItem.PhotoLink.includes(uppercaseName)) {
-    console.log("Found");  
-    let pokemonImg = document.createElement("img");
-    pokemonImg.classList.add("pokemon-image");
-    pokemonImg.classList.add(uppercaseName + "-image");
-    pokemonImg.src = currentItem.PhotoLink;
-    pokemonImg.setAttribute("width", 100);
-    pokemonImg.setAttribute("height", 100);
-    listItem.appendChild(pokemonImg);
-    break; }
-    
-    function pokemonsConditions(link) {
-      let pokemonImg = document.createElement("img");
-      pokemonImg.classList.add("pokemon-image");
-      pokemonImg.src = link
-      pokemonImg.classList.add(uppercaseName + "-image");
-      pokemonImg.setAttribute("width", 100);
-      pokemonImg.setAttribute("height", 100);
-      listItem.appendChild(pokemonImg); 
-    } 
-    if (currentItem.PhotoLink.includes("Nidoran")) {
-      if (uppercaseName == "Nidoran-f" && (checked == false)) {
-        pokemonsConditions("https://archives.bulbagarden.net/media/upload/b/b2/0029Nidoran.png") 
-      checked = true; 
-    }
-      else if (uppercaseName == "Nidoran-m" && (checked == false)) {
-        pokemonsConditions("https://archives.bulbagarden.net/media/upload/8/8c/0032Nidoran.png");
-        checked = true; 
-      }
-      }
-      if (currentItem.PhotoLink.includes("Farfetch") && (uppercaseName == "Farfetchd")) {
-        pokemonsConditions("https://archives.bulbagarden.net/media/upload/9/99/0083Farfetch%27d.png")
+  function searchImage(individualLinks, uppercaseName, listItem) {
+    let checked = false;
+    for (let i = 0; i < individualLinks.length; i++) {
+      let currentItem = individualLinks[i];
+      if (currentItem.PhotoLink.includes(uppercaseName)) {
+        console.log("Found");
+        let pokemonImg = document.createElement("img");
+        pokemonImg.classList.add("pokemon-image");
+        pokemonImg.classList.add(uppercaseName + "-image");
+        pokemonImg.src = currentItem.PhotoLink;
+        pokemonImg.setAttribute("width", 100);
+        pokemonImg.setAttribute("height", 100);
+        listItem.appendChild(pokemonImg);
         break;
       }
-      if (currentItem.PhotoLink.includes("Mr._Mime") && (uppercaseName == "Mr-mime")) {
-        pokemonsConditions("https://archives.bulbagarden.net/media/upload/f/fb/0122Mr._Mime.png")
+
+      function pokemonsConditions(link) {
+        let pokemonImg = document.createElement("img");
+        pokemonImg.classList.add("pokemon-image");
+        pokemonImg.src = link;
+        pokemonImg.classList.add(uppercaseName + "-image");
+        pokemonImg.setAttribute("width", 100);
+        pokemonImg.setAttribute("height", 100);
+        listItem.appendChild(pokemonImg);
+      }
+      if (currentItem.PhotoLink.includes("Nidoran")) {
+        if (uppercaseName == "Nidoran-f" && checked == false) {
+          pokemonsConditions(
+            "https://archives.bulbagarden.net/media/upload/b/b2/0029Nidoran.png"
+          );
+          checked = true;
+        } else if (uppercaseName == "Nidoran-m" && checked == false) {
+          pokemonsConditions(
+            "https://archives.bulbagarden.net/media/upload/8/8c/0032Nidoran.png"
+          );
+          checked = true;
+        }
+      }
+      if (
+        currentItem.PhotoLink.includes("Farfetch") &&
+        uppercaseName == "Farfetchd"
+      ) {
+        pokemonsConditions(
+          "https://archives.bulbagarden.net/media/upload/9/99/0083Farfetch%27d.png"
+        );
+        break;
+      }
+      if (
+        currentItem.PhotoLink.includes("Mr._Mime") &&
+        uppercaseName == "Mr-mime"
+      ) {
+        pokemonsConditions(
+          "https://archives.bulbagarden.net/media/upload/f/fb/0122Mr._Mime.png"
+        );
         break;
       }
     }
   }
-
 
   function searchPokemon() {
     let $searchBar = $("#input");
@@ -154,9 +166,11 @@ for (let i = 0; i < individualLinks.length; i++) {
       let modalTypes = document.querySelector(".modal-types");
 
       let uppercaseTitle = item.name[0].toUpperCase() + item.name.slice(1);
-      modalTitle.innerText = uppercaseTitle
+      modalTitle.innerText = uppercaseTitle;
 
-      let imageAttribute = document.querySelector("." + uppercaseTitle + "-image"); 
+      let imageAttribute = document.querySelector(
+        "." + uppercaseTitle + "-image"
+      );
       let modalSrc = imageAttribute.getAttribute("src");
       modalImage.setAttribute("src", modalSrc);
 
@@ -207,7 +221,7 @@ for (let i = 0; i < individualLinks.length; i++) {
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
-            detailsUrl: item.url,
+            detailsUrl: item.url
           };
           add(pokemon);
         });
@@ -224,7 +238,6 @@ for (let i = 0; i < individualLinks.length; i++) {
         return response.json();
       })
       .then(function (details) {
-        item.imageUrl = details.sprites.front_default;
         item.height = details.height;
         item.types = details.types;
         item.weight = details.weight;

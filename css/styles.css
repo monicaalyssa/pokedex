@@ -103,7 +103,7 @@ p {
 .modal-body {
   display: flex;
   justify-content: space-between;
-  height: 250px
+  height: 250px;
 }
 
 .modal-image {
@@ -111,9 +111,8 @@ p {
   padding-right: 50px;
 }
 
-
 .modal-body {
-  flex: 1 1 0
+  flex: 1 1 0;
 }
 
 .pokemon-grid {
@@ -213,7 +212,7 @@ p {
 
   .btn-sm {
     margin-top: 0;
-margin-bottom: 8px;
+    margin-bottom: 8px;
   }
 
   .no-results {
@@ -242,6 +241,4 @@ margin-bottom: 8px;
     width: 92%;
     margin: auto;
   }
-
 }
-
