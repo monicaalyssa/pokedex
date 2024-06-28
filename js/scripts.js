@@ -1,7 +1,7 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-  const jsonFilePath = "images/imageurls.json";
+  const jsonFilePath = "js/images.json";
 
   function add(pokemon) {
     if (
