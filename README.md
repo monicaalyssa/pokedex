@@ -33,4 +33,3 @@ PokeAPI is used to fetch data on different Pokémon species, which includes each
 ### Prettier and ESLint
 Prettier is used to automatically format the code to ensure it follows a consistent style. ESLint is used to catch potential bugs and enforce best practices. Together, they help maintain the quality and readability of the code.
 ##
-To see the original repository of this project <a href="https://github.com/monicaalyssa/js-app" target="_blank">click here</a>.
