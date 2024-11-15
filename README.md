@@ -5,21 +5,13 @@ This project is a web application that utilizes a Pokémon API to fetch and disp
 - **List of Pokémon:** The application presents a list of Pokémon for users to browse through.
 - **Pokémon Details:** Clicking on a Pokémon displays a modal with the Pokémon's name, image, height, and type(s).
 - **Search Bar:** Includes a search functionality to easily find Pokémon by name.
-## Usage
+## Installation
 To use this application locally, follow these steps:
 
-**Clone**
 1. Clone this repository to your local machine using `git clone https://github.com/monicaalyssa/pokedex` inside your terminal.
 2. Navigate to the project folder, called 'pokedex'.
 3. Open the `index.html` file in your web browser.
 
-or
-
-**Download**
-1. Scroll to the top of this page and locate the green `Code` button.
-2. Click `Download ZIP`.
-3. Once downloaded locate the ZIP file, extract it, and open it.
-4. Open the `index.html` file in your web browser.
 ## Technologies & Dependencies
 ### JavaScript ES6
 The core functionality of the application is written using JavaScript ES6. This includes the use of promises for asynchronous operations and forEach loops all within an IIFE.
