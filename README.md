@@ -15,6 +15,10 @@ git clone https://github.com/monicaalyssa/pokdex
 2. Navigate to the project folder, called 'pokedex'.
 3. Open the `index.html` file in your web browser.
 
+## Demo 📹
+
+https://github.com/user-attachments/assets/455cf580-c324-4bbc-9055-4f350ffc46fa
+
 ## Technologies & Dependencies 🛠️
 ### JavaScript ES6
 The core functionality of the application is written using JavaScript ES6. This includes the use of promises for asynchronous operations and forEach loops all within an IIFE.
